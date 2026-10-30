@@ -1,36 +1,33 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# LPSS · Los Patagones Story Studio — Next.js
 
-## Getting Started
+Proyecto Next.js (App Router, JavaScript). Mismo diseño que la versión estática.
 
-First, run the development server:
+## Probarlo en tu PC
+1. Instalá Node.js (versión 20 o más nueva).
+2. En esta carpeta: `npm install` y después `npm run dev`.
+3. Abrí http://localhost:3000
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Publicarlo en Vercel
+- Lo más seguro: subilo a un repositorio NUEVO (o a una rama nueva del actual) y conectalo en Vercel. Así no pisás lo que ya está publicado.
+- Si lo ponés en tu repositorio actual, esta carpeta reemplaza `app/`, `public/`, `package.json` y `next.config.mjs`. Hacé una copia antes.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Dónde está cada cosa
+- `app/body.html` el contenido de la página (textos, secciones, lista de panorámicas del fondo).
+- `app/globals.css` los estilos.
+- `app/Site.js` la lógica (carrusel, menú del celular, calcos, provincias, países). Arriba está `SITIO`, con los datos que ve el público.
+- `app/layout.js` título, descripción, ícono e imagen para compartir.
+- `public/images/` todas las imágenes: `panoramicas/`, `calcos/`, `flags/` (13 banderas PNG), logo, Jubilaneta, equipo.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Modo edición (solo para vos)
+Entrá a `/#editar`. Podés sumar calcos y vínculos (🔗), marcar provincias y sumar países (se eligen de una lista). Tocá "Copiar datos" y pegalos en `SITIO` (en `app/Site.js`) para que queden para todos. "Salir" vuelve a la vista pública.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Panorámicas
+Se recorren completas de derecha a izquierda y se mezclan entre sí. Para sumar una: ponela en `public/images/panoramicas/` (horizontal, larga, sin texto, ~300 KB) y agregala como primera en la lista `<div class="pan">` de `app/body.html`. Velocidad: `SPEED` en `app/Site.js` (más número = más rápido).
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Pendiente antes de publicar
+- Agregar los vínculos definitivos de cada calco.
+- Confirmar que el teléfono y el correo de contacto siguen vigentes.
+- Probar la compilación con `npm install` y `npm run build`.
+- Publicar primero en una rama o proyecto de prueba, sin reemplazar la versión activa.
+- La sección de privacidad ya está incluida.
+- Los cambios hechos en modo edición se guardan en el navegador; para que sean públicos hay que copiar los datos y actualizar `SITIO` en `app/Site.js`.
